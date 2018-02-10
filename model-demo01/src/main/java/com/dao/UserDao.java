@@ -6,15 +6,14 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.dao.repository.DomainRepository;
 import com.entity.User;
 
 @Repository
-public class UserDao implements DomainRepository<User, Long>{
+public class UserDao implements BaseDao<User, Long>{
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	public User load(Long id) {
 		// TODO Auto-generated method stub
 		return null;
@@ -36,8 +35,7 @@ public class UserDao implements DomainRepository<User, Long>{
 	}
 
 	public Long save(User entity) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Long) sessionFactory.getCurrentSession().save(entity);
 	}
 
 	public void saveOrUpdate(User entity) {
@@ -54,5 +52,6 @@ public class UserDao implements DomainRepository<User, Long>{
 		// TODO Auto-generated method stub
 		
 	}
+	
 
 }
